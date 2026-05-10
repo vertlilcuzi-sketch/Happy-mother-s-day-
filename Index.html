@@ -1,60 +1,154 @@
-export default function MothersDayWebsite() { return ( <div className="min-h-screen bg-gradient-to-b from-pink-200 via-rose-100 to-white text-gray-800 flex flex-col items-center justify-center p-6"> <div className="max-w-3xl w-full bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-8 border border-pink-200"> <div className="text-center"> <h1 className="text-5xl md:text-6xl font-extrabold text-pink-600 mb-4 animate-pulse"> 💖 Happy Mother’s Day 💖 </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Mother's Day & Birthday Mom ❤️</title>
 
-<p className="text-xl md:text-2xl font-semibold text-rose-500 mb-6">
-        To My Amazing Mom 🌸
-      </p>
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-      
+    body{
+      height:100vh;
+      background: linear-gradient(135deg,#ff4e91,#ff9a9e,#fad0c4);
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      color:white;
+      position:relative;
+    }
 
-      <div className="space-y-5 text-lg leading-relaxed">
-        <p>
-          Dear Mom, ❤️
-        </p>
- <img
-  src="/mom.jpg"
-  alt="My Mom"
-  className="w-full h-72 object-cover rounded-2xl shadow-lg mb-8"
-/>
+    .container{
+      z-index:2;
+      padding:20px;
+      animation: fadeIn 2s ease;
+    }
 
-        <p>
-          Thank you for your love, care, strength, and every sacrifice you’ve made for me.
-          You are my biggest inspiration and my greatest blessing.
-        </p>
+    h1{
+      font-size:3rem;
+      margin-bottom:10px;
+      text-shadow:0 0 15px rgba(0,0,0,0.3);
+    }
 
-        <p>
-          No matter how much I grow, I will always be your child and forever grateful for everything you do.
-        </p>
+    h2{
+      font-size:1.8rem;
+      margin-bottom:20px;
+    }
 
-        <p className="font-bold text-pink-600 text-2xl">
-          I love you so much, Mom 🌹
-        </p>
-      </div>
+    p{
+      max-width:700px;
+      margin:auto;
+      font-size:1.2rem;
+      line-height:1.8;
+      background: rgba(255,255,255,0.15);
+      padding:20px;
+      border-radius:20px;
+      backdrop-filter: blur(5px);
+    }
 
-      <div className="mt-10 flex flex-wrap justify-center gap-4 text-3xl">
-        <span>💐</span>
-        <span>🌸</span>
-        <span>💖</span>
-        <span>👑</span>
-        <span>🌹</span>
-        <span>✨</span>
-      </div>
+    .from{
+      margin-top:20px;
+      font-size:1.4rem;
+      font-weight:bold;
+    }
 
-      <div className="mt-10">
-        <audio controls className="w-full max-w-md mx-auto mb-6 rounded-xl">
-          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+    .heart{
+      position:absolute;
+      color:white;
+      font-size:20px;
+      animation: float 6s linear infinite;
+      opacity:0.7;
+    }
 
-        <button className="px-8 py-4 rounded-2xl bg-pink-500 hover:bg-pink-600 transition-all duration-300 text-white text-lg font-bold shadow-lg">
-          Best Mom Ever 💕
-        </button>
-      </div>
+    @keyframes float{
+      0%{
+        transform:translateY(100vh) scale(0);
+      }
+      100%{
+        transform:translateY(-10vh) scale(1.5);
+      }
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    button{
+      margin-top:25px;
+      padding:12px 25px;
+      border:none;
+      border-radius:30px;
+      background:white;
+      color:#ff4e91;
+      font-size:1rem;
+      cursor:pointer;
+      font-weight:bold;
+      transition:0.3s;
+    }
+
+    button:hover{
+      transform:scale(1.1);
+      background:#ffe6ef;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>🌸 Happy Mother’s Day 🌸</h1>
+    <h2>🎂 Happy Birthday Cecilia Benyin 🎂</h2>
+
+    <p>
+      Dear Mom, <br><br>
+      Today is extra special because we celebrate both your birthday and Mother’s Day.
+      Thank you for your endless love, care, sacrifices, and support.
+      You are my strength, my happiness, and my biggest blessing.
+      May your life always be filled with joy, peace, good health, and love.
+      I love you so much Mom ❤️
+    </p>
+
+    <div class="from">
+      — From Your Son, Albert 💖
     </div>
+
+    <button onclick="playMusic()">▶ Play Music</button>
+
+    <audio id="music" loop>
+      <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+    </audio>
   </div>
 
-  <footer className="mt-8 text-pink-700 font-medium text-center">
-    Made with ❤️ for Mom
-  </footer>
-</div>
+  <script>
+    function playMusic(){
+      document.getElementById("music").play();
+    }
 
-); }
+    // Floating hearts
+    for(let i=0;i<40;i++){
+      let heart=document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML="❤️";
+      heart.style.left=Math.random()*100+"vw";
+      heart.style.animationDuration=(Math.random()*3+3)+"s";
+      heart.style.fontSize=(Math.random()*20+15)+"px";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+            </html>
