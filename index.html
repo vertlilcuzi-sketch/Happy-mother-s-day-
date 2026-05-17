@@ -9,15 +9,16 @@
 
         body {
             margin: 0;
-            padding: 0;
+            padding: 20px 0; /* Added padding to give space at the top and bottom when scrolling */
             background: linear-gradient(135deg, #fce4ec, #f8bbd0);
             font-family: 'Poppins', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            overflow-y: auto; /* Fixed: Allows vertical scrolling when content expands */
             color: #333;
+            box-sizing: border-box;
         }
 
         .card {
@@ -28,8 +29,9 @@
             text-align: center;
             max-width: 500px;
             width: 90%;
-            z-index: 10;
+            z-index: 100; 
             position: relative;
+            margin: auto; /* Keeps the card centered perfectly while scrolling */
         }
 
         h1 {
@@ -120,13 +122,23 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Floating Hearts CSS */
+        #hearts-container {
+            position: fixed; /* Changed to fixed so background container doesn't stretch when page grows */
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none; 
+            z-index: 1;
+        }
+
         .heart {
             position: absolute;
             font-size: 20px;
             color: #ff4081;
             animation: floatUp 4s linear infinite;
-            z-index: 1;
+            pointer-events: none;
         }
 
         @keyframes floatUp {
@@ -163,6 +175,11 @@
             document.getElementById('secretMessage').style.display = 'block';
             document.getElementById('revealBtn').style.display = 'none';
             createHearts(15); // Add a burst of extra hearts!
+            
+            // Automatically scrolls down to show the new buttons on small phone screens
+            setTimeout(() => {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }, 100);
         }
 
         // Function to create floating background hearts
@@ -192,4 +209,4 @@
     </script>
 
 </body>
-        </html>
+    </html>
