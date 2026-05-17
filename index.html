@@ -1,59 +1,195 @@
-export default function MothersDayWebsite() { return ( <div className="min-h-screen bg-gradient-to-b from-pink-200 via-rose-100 to-white text-gray-800 flex flex-col items-center justify-center p-6"> <div className="max-w-3xl w-full bg-white/80 backdrop-blur-md shadow-2xl rounded-3xl p-8 border border-pink-200"> <div className="text-center"> <h1 className="text-5xl md:text-6xl font-extrabold text-pink-600 mb-4 animate-pulse"> 💖 Happy Mother’s Day 💖 </h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Home, Anisah ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap');
 
-<p className="text-xl md:text-2xl font-semibold text-rose-500 mb-6">
-        To My Amazing Mom 🌸
-      </p>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            color: #333;
+        }
 
-      <img
-        src="/mnt/data/file_00000000b93071fd96cc6aa738d2ddf6"
-        alt="My Mom"
-        className="w-full h-72 object-cover rounded-2xl shadow-lg mb-8"
-      />
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            position: relative;
+        }
 
-      <div className="space-y-5 text-lg leading-relaxed">
-        <p>
-          Dear Mom, ❤️
-        </p>
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #d81b60;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
 
-        <p>
-          Thank you for your love, care, strength, and every sacrifice you’ve made for me.
-          You are my biggest inspiration and my greatest blessing.
-        </p>
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
 
-        <p>
-          No matter how much I grow, I will always be your child and forever grateful for everything you do.
-        </p>
+        .highlight {
+            color: #d81b60;
+            font-weight: 600;
+        }
 
-        <p className="font-bold text-pink-600 text-2xl">
-          I love you so much, Mom 🌹
-        </p>
-      </div>
+        .hidden-message {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #f8bbd0;
+            animation: fadeIn 1s ease-in;
+        }
 
-      <div className="mt-10 flex flex-wrap justify-center gap-4 text-3xl">
-        <span>💐</span>
-        <span>🌸</span>
-        <span>💖</span>
-        <span>👑</span>
-        <span>🌹</span>
-        <span>✨</span>
-      </div>
+        /* Main Reveal Button */
+        button {
+            background-color: #d81b60;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(216, 27, 96, 0.3);
+        }
 
-      <div className="mt-10">
-        <audio controls className="w-full max-w-md mx-auto mb-6 rounded-xl">
-          <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
+        button:hover {
+            background-color: #c2185b;
+            transform: scale(1.05);
+        }
 
-        <button className="px-8 py-4 rounded-2xl bg-pink-500 hover:bg-pink-600 transition-all duration-300 text-white text-lg font-bold shadow-lg">
-          Best Mom Ever 💕
-        </button>
-      </div>
+        /* WhatsApp Reply Buttons */
+        .reply-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .reply-btn {
+            text-decoration: none;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: inline-block;
+        }
+
+        .love-btn {
+            background-color: #25D366; /* WhatsApp Green */
+        }
+        
+        .love-btn:hover {
+            background-color: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .okay-btn {
+            background-color: #757575; /* Playful neutral grey */
+        }
+        
+        .okay-btn:hover {
+            background-color: #616161;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Floating Hearts CSS */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: #ff4081;
+            animation: floatUp 4s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="hearts-container"></div>
+
+    <div class="card">
+        <h1>Welcome Back, Anisah! ❤️</h1>
+        <p>I have missed you more than words can even describe. The days felt so long while you were away at school, and having you back is the best feeling in the entire world.</p>
+        
+        <button id="revealBtn" onclick="revealMessage()">I have something else to say...</button>
+
+        <div id="secretMessage" class="hidden-message">
+            <p>I know I couldn't be there to say this on the exact day, but...</p>
+            <h2 class="highlight">Happy Belated Mother's Day! 🌸</h2>
+            <p>You are so incredibly special to me, Anisah, and I appreciate everything about you. I want to celebrate you not just on one day, but every single day. I love you!</p>
+            
+            <div class="reply-buttons">
+                <a href="https://wa.me/233206875120?text=Thank%20you%2C%20love%20you%20more!%20%E2%9D%A4%EF%B8%8F" class="reply-btn love-btn" target="_blank">Thank you, love you more ❤️</a>
+                <a href="https://wa.me/233206875120?text=Okay%20I%20heard%20u" class="reply-btn okay-btn" target="_blank">Okay I heard u 🙄</a>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <footer className="mt-8 text-pink-700 font-medium text-center">
-    Made with ❤️ for Mom
-  </footer>
-</div>
+    <script>
+        // Function to reveal the hidden message
+        function revealMessage() {
+            document.getElementById('secretMessage').style.display = 'block';
+            document.getElementById('revealBtn').style.display = 'none';
+            createHearts(15); // Add a burst of extra hearts!
+        }
 
-); }
+        // Function to create floating background hearts
+        function createHearts(amount) {
+            const container = document.getElementById('hearts-container');
+            for (let i = 0; i < amount; i++) {
+                let heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤️';
+                
+                // Randomize position, size, and animation duration
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+                
+                container.appendChild(heart);
+
+                // Remove heart after animation
+                setTimeout(() => {
+                    heart.remove();
+                }, 5000);
+            }
+        }
+
+        // Create a few hearts constantly in the background
+        setInterval(() => createHearts(2), 800);
+    </script>
+
+</body>
+        </html>
